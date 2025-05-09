@@ -18,6 +18,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ShowData extends AppCompatActivity {
 
@@ -104,8 +106,14 @@ public class ShowData extends AppCompatActivity {
             TextView tvreason = myview.findViewById(R.id.tvReason);
             ImageView delete = myview.findViewById(R.id.delete);
             TextView title = myview.findViewById(R.id.title);
-            if (EXPENSE==true)title.setText("Expense");
-            else title.setText("Income");
+            TextView tvTime = myview.findViewById(R.id.tvTime);
+            if (EXPENSE==true){
+                title.setText("Expense");
+            }
+            else {
+                title.setText("Income");
+               tvamount . setTextColor(getResources().getColor(R.color.green));
+            }
 
             hashMap = arrayList.get(position);
             String id = hashMap.get("id");
@@ -114,6 +122,15 @@ public class ShowData extends AppCompatActivity {
             String time = hashMap.get("time");
 
             tvamount.setText("BDT: "+amount);
+
+            // ===== Date format করা হচ্ছে =====
+            long timeInMillis = (long) Double.parseDouble(time);
+            Date date = new Date(timeInMillis);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy hh:mm a");
+            String formattedDate = sdf.format(date);
+            // ==================================
+
+            tvTime.setText(formattedDate);
             tvreason.setText(reason);
 
             delete.setOnClickListener(v->{
