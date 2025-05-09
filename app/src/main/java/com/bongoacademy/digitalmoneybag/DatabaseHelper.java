@@ -41,6 +41,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //========================================================
 
+    //========================================================
+    public void addIncome(Double amount,String reason){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues conval = new ContentValues();
+        conval.put("amount",amount);
+        conval.put("reason",reason);
+        conval.put("time",System.currentTimeMillis());
+        db.insert("income",null,conval);
+
+    }
+    //========================================================
+
+    //========================================================
+
     public double CalculatetotalExpense(){
         double totalExpense =0;
 
@@ -56,8 +70,54 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return totalExpense;
 
     }
+   //===================================================================
 
 
+    //========================================================
+
+    public double CalculatetotalIncome(){
+        double totalincome =0;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor  = db.rawQuery("select * from income",null);
+        if (cursor!=null & cursor.getCount()>0){
+            while (cursor.moveToNext()){
+                double amount = cursor.getDouble(1);
+                totalincome = totalincome+amount;
+            }
+        }
+
+        return totalincome;
+
+    }
+    //===================================================================
+
+    //===================================================================
+
+    public Cursor getAllExpense(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from expense",null);
+
+        return cursor;
+    }
+
+    public Cursor getAllIncome(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from income",null);
+
+        return cursor;
+    }
+
+    //===================================================================
+
+    public void deleteExpense(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("delete from expense where id like "+id);
+    }
+    public void deleteIncome(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("delete from income where id like "+id);
+    }
 
 }
 

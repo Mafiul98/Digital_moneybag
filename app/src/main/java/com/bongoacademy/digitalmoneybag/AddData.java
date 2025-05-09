@@ -14,22 +14,25 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class AddData extends AppCompatActivity {
 
-    TextView tvdisplay;
+    TextView tvTitle;
     EditText edAmount,edReason;
     Button button;
     DatabaseHelper dbhelper;
+
+    public static boolean EXPENSE = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_data);
-        tvdisplay=findViewById(R.id.tvdisplay);
+        tvTitle=findViewById(R.id.tvTitle);
         edAmount=findViewById(R.id.edAmount);
         edReason=findViewById(R.id.edReason);
         button=findViewById(R.id.button);
         dbhelper = new DatabaseHelper(this);
 
 
+        if (EXPENSE==true) tvTitle.setText("Add Expense");
 
         button.setOnClickListener(v->{
 
@@ -37,29 +40,29 @@ public class AddData extends AppCompatActivity {
                 String Aamount = edAmount.getText().toString();
                 String reason = edReason.getText().toString();
                 Double amount = Double.parseDouble(Aamount);
-                dbhelper.addExpense(amount,reason);
-                tvdisplay.setText("Data Inserted");
+
+                if (EXPENSE==true){
+                    dbhelper.addExpense(amount,reason);
+                    tvTitle.setText("Expense Add");
+                }else {
+                    dbhelper.addIncome(amount,reason);
+                    tvTitle.setText("Income Add");
+                }
+
                 edAmount.setText("");
                 edReason.setText("");
 
 
             }else Toast.makeText(AddData.this,"Please Insert Data",Toast.LENGTH_LONG).show();
 
-
-
         });
 
-
-
-
     }
-
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
 
     }
-
 
 }

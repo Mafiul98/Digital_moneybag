@@ -27,18 +27,41 @@ public class MainActivity extends AppCompatActivity {
 
         tvAddExpense.setOnClickListener(v->{
 
+            AddData.EXPENSE = true;
             startActivity(new Intent(MainActivity.this,AddData.class));
 
         });
 
-        updateUi();
+        tvAddIncome.setOnClickListener(v->{
 
+            AddData.EXPENSE = false;
+            startActivity(new Intent(MainActivity.this,AddData.class));
+
+        });
+
+        tvShowAllDataExpense.setOnClickListener(v->{
+            ShowData.EXPENSE = true;
+            startActivity(new Intent(MainActivity.this, ShowData.class));
+
+        });
+
+        tvShowAllDataIncome.setOnClickListener(v->{
+            ShowData.EXPENSE = false;
+            startActivity(new Intent(MainActivity.this, ShowData.class));
+
+        });
+
+
+        updateUi();
 
     }
 
     //===================================================================
 public void updateUi(){
-        tvTotalExpense.setText("BDT: "+dbhelper.CalculatetotalExpense());
+        tvTotalExpense.setText("BDT: "+dbhelper.CalculatetotalExpense() );
+        tvTotalIncome.setText("BDT: "+dbhelper.CalculatetotalIncome() );
+        double Balance = dbhelper.CalculatetotalIncome()-dbhelper.CalculatetotalExpense();
+        tvFinalBalance.setText("BDT: "+Balance);
 }
 
     //===================================================================
