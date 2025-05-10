@@ -1,8 +1,11 @@
 package com.bongoacademy.digitalmoneybag;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -15,6 +18,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#ffffff"));}
+        WindowCompat.getInsetsController(getWindow(),getWindow().getDecorView())
+                .setAppearanceLightStatusBars(true);
         setContentView(R.layout.activity_main);
         tvFinalBalance=findViewById(R.id.tvFinalBalance);
         tvShowAllDataExpense=findViewById(R.id.tvShowAllDataExpense);

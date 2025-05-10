@@ -1,5 +1,7 @@
 package com.bongoacademy.digitalmoneybag;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,6 +12,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class AddData extends AppCompatActivity {
@@ -24,6 +27,10 @@ public class AddData extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#ffffff"));}
+        WindowCompat.getInsetsController(getWindow(),getWindow().getDecorView())
+                .setAppearanceLightStatusBars(true);
         setContentView(R.layout.activity_add_data);
         tvTitle=findViewById(R.id.tvTitle);
         edAmount=findViewById(R.id.edAmount);
@@ -32,7 +39,14 @@ public class AddData extends AppCompatActivity {
         dbhelper = new DatabaseHelper(this);
 
 
-        if (EXPENSE==true) tvTitle.setText("Add Expense");
+        if (EXPENSE==true){
+            tvTitle.setText("আপনার খরচ লিখুন");
+            edReason.setHint("কিভাবে খরচ করেছেন লিখুন");
+        }
+        else {
+            tvTitle.setText("আপনার আয় লিখুন");
+            edReason.setHint("কিভাবে আয় করেছেন লিখুন");
+        }
 
         button.setOnClickListener(v->{
 
@@ -43,10 +57,12 @@ public class AddData extends AppCompatActivity {
 
                 if (EXPENSE==true){
                     dbhelper.addExpense(amount,reason);
-                    tvTitle.setText("Expense Add");
+                    tvTitle.setText("খরচ যোগ হয়েছে");
+
                 }else {
                     dbhelper.addIncome(amount,reason);
-                    tvTitle.setText("Income Add");
+                    tvTitle.setText("আয় যোগ হয়েছে");
+
                 }
 
                 edAmount.setText("");

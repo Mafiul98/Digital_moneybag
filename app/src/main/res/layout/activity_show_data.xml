@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".ShowData"
     android:orientation="vertical"
-    android:layout_margin="15dp"
+    android:padding="15dp"
+    android:background="#ffffff"
     >
 
     <TextView
@@ -15,9 +16,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Showing Data"
-        android:textSize="28sp"
+        android:textSize="32sp"
         android:gravity="center"
-        android:layout_margin="15dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"
         />
 
     <ListView

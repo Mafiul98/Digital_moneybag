@@ -96,14 +96,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor getAllExpense(){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from expense",null);
+        Cursor cursor = db.rawQuery("select * from expense order by id desc",null);
 
         return cursor;
     }
 
     public Cursor getAllIncome(){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from income",null);
+        Cursor cursor = db.rawQuery("select * from income order by id desc",null);
 
         return cursor;
     }

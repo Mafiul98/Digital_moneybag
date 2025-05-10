@@ -8,6 +8,7 @@
     tools:context=".AddData"
     android:orientation="vertical"
     android:padding="15dp"
+    android:background="#ffffff"
     >
 
     <TextView
@@ -16,15 +17,17 @@
         android:layout_height="wrap_content"
         android:text="Add Data"
         android:textSize="35sp"
+        android:textStyle="bold"
         android:gravity="center"
         />
     <EditText
         android:id="@+id/edAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="amount"
+        android:hint="0"
         android:inputType="number"
         android:textSize="20sp"
+        android:layout_marginTop="20dp"
         />
     <EditText
         android:id="@+id/edReason"
@@ -40,6 +43,7 @@
         android:layout_height="wrap_content"
         android:text="Insert Data"
         android:textSize="25sp"
+        android:backgroundTint="#03A9F4"
         />
 
 </LinearLayout>

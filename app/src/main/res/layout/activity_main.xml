@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:layout_margin="16dp"
+    android:padding="16dp"
+    android:background="#ffffff"
     >
 
 
@@ -75,9 +76,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Expenses"
+                android:text="মোট ব্যয়"
                 android:textColor="#000000"
-                android:textSize="16sp"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 />
 
             <TextView
@@ -101,11 +103,11 @@
                     android:id="@+id/tvAddExpense"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add Expense"
+                    android:text="খরচ যোগ করুন"
                     android:textColor="#000000"
                     android:textSize="16sp"
                     android:layout_marginRight="10dp"
-                    android:background="#80FFEB3B"
+                    android:background="#C8FF9800"
                     android:padding="3dp"
                     android:clickable="true"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
@@ -115,10 +117,10 @@
                     android:id="@+id/tvShowAllDataExpense"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Show All Data"
+                    android:text="সব খরচ দেখুন"
                     android:textColor="#000000"
                     android:textSize="16sp"
-                    android:background="#80FFEB3B"
+                    android:background="#C8FF9800"
                     android:padding="3dp"
                     android:clickable="true"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
@@ -164,9 +166,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Income"
+                android:text="মোট আয়"
                 android:textColor="#000000"
-                android:textSize="16sp"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 />
 
             <TextView
@@ -190,11 +193,11 @@
                     android:id="@+id/tvAddIncome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add Income"
+                    android:text="আয় যোগ করুন"
                     android:textColor="#000000"
                     android:textSize="16sp"
                     android:layout_marginRight="10dp"
-                    android:background="#80FFEB3B"
+                    android:background="#C8FF9800"
                     android:padding="3dp"
                     android:clickable="true"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
@@ -204,10 +207,10 @@
                     android:id="@+id/tvShowAllDataIncome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Show All Data"
+                    android:text="সব আয় দেখুন"
                     android:textColor="#000000"
                     android:textSize="16sp"
-                    android:background="#80FFEB3B"
+                    android:background="#C8FF9800"
                     android:padding="3dp"
                     android:clickable="true"
                     android:foreground="?attr/selectableItemBackgroundBorderless"

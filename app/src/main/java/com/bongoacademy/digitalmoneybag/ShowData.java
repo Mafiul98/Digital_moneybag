@@ -1,6 +1,8 @@
 package com.bongoacademy.digitalmoneybag;
 
 import android.database.Cursor;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
@@ -34,13 +37,17 @@ public class ShowData extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#ffffff"));}
+        WindowCompat.getInsetsController(getWindow(),getWindow().getDecorView())
+                .setAppearanceLightStatusBars(true);
         setContentView(R.layout.activity_show_data);
         tvtitle=findViewById(R.id.tvtitle);
         listview=findViewById(R.id.listview);
         dbhelper = new DatabaseHelper(this);
 
-        if (EXPENSE == true) tvtitle.setText("Showing All Expenses");
-        else tvtitle.setText("Showing All Income");
+        if (EXPENSE == true) tvtitle.setText("Expense List");
+        else tvtitle.setText("Income List");
 
        loadData();
 
